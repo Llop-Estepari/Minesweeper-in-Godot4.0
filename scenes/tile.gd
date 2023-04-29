@@ -16,7 +16,7 @@ func _on_control_gui_input(event):
 		if event.is_action_pressed("right_mouse"):
 			flagged = !flagged
 			flag.visible = !flag.visible
-			Global.emit_signal("tile_flagged")
+			Global.emit_signal("flagged", flag.visible)
 
 func set_bomb():
 	has_bomb = true

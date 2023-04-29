@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Buscaminas"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -41,4 +41,4 @@ right_mouse={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.52549, 0.52549, 0.52549, 1)
+environment/defaults/default_clear_color=Color(0.313726, 0.392157, 0.52549, 1)

@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3 uid="uid://3crdlho5dadr"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_e2cuo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axhil"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gb8aj"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e2cuo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -230.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(460, 200)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Minesweeper"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="OptionsLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SELECT DIFFICULTY:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+item_count = 4
+popup/item_0/text = "EASY"
+popup/item_0/id = 0
+popup/item_1/text = "MEDIUM"
+popup/item_1/id = 1
+popup/item_2/text = "HARD"
+popup/item_2/id = 2
+popup/item_3/text = "CUSTOM"
+popup/item_3/id = 3
+
+[node name="CustomParameters" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_axhil")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/CustomParameters"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="columns" type="LineEdit" parent="PanelContainer/VBoxContainer/CustomParameters/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Columns"
+alignment = 1
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="rows" type="LineEdit" parent="PanelContainer/VBoxContainer/CustomParameters/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Row"
+alignment = 1
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="mines" type="LineEdit" parent="PanelContainer/VBoxContainer/CustomParameters/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Mines"
+alignment = 1
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(460, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gb8aj")
+
+[node name="play_button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "PLAY!"
+
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/CustomParameters/VBoxContainer/columns" to="." method="_on_columns_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/CustomParameters/VBoxContainer/rows" to="." method="_on_rows_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/CustomParameters/VBoxContainer/mines" to="." method="_on_mines_text_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/play_button" to="." method="_on_play_button_pressed"]
